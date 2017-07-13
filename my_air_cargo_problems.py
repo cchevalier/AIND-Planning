@@ -48,7 +48,7 @@ class AirCargoProblem(Problem):
             list of Action objects
         """
 
-        # TODO create concrete Action objects based on the domain action schema for: Load, Unload, and Fly
+        # Concrete Action objects based on the domain action schema for: Load, Unload, and Fly
         # concrete actions definition: specific literal action that does not include variables as with the schema
         # for example, the action schema 'Load(c, p, a)' can represent the concrete actions 'Load(C1, P1, SFO)'
         # or 'Load(C2, P2, JFK)'.  The actions for the planning problem must be concrete because the problems in
@@ -60,7 +60,7 @@ class AirCargoProblem(Problem):
             :return: list of Action objects
             """
             loads = []
-            # TODO create all load ground actions from the domain Load action
+            # TODO P1.1 load_actions: create all load ground actions from the domain Load action
             return loads
 
         def unload_actions():
@@ -69,7 +69,7 @@ class AirCargoProblem(Problem):
             :return: list of Action objects
             """
             unloads = []
-            # TODO create all Unload ground actions from the domain Unload action
+            # TODO P1.2 unload_actions: create all Unload ground actions from the domain Unload action
             return unloads
 
         def fly_actions():
@@ -103,7 +103,7 @@ class AirCargoProblem(Problem):
             e.g. 'FTTTFF'
         :return: list of Action objects
         """
-        # TODO implement
+        # TODO P1.3 actions: implement
         possible_actions = []
         return possible_actions
 
@@ -116,7 +116,7 @@ class AirCargoProblem(Problem):
         :param action: Action applied
         :return: resulting state after action
         """
-        # TODO implement
+        # TODO P1.4 result: implement
         new_state = FluentState([], [])
         return encode_state(new_state, self.state_map)
 
@@ -157,7 +157,7 @@ class AirCargoProblem(Problem):
         conditions by ignoring the preconditions required for an action to be
         executed.
         """
-        # TODO implement (see Russell-Norvig Ed-3 10.2.3  or Russell-Norvig Ed-2 11.2)
+        # TODO P2.1 h_ignore_preconditions: implement (see Russell-Norvig Ed-3 10.2.3  or Russell-Norvig Ed-2 11.2)
         count = 0
         return count
 
@@ -188,10 +188,9 @@ def air_cargo_p1() -> AirCargoProblem:
 
 
 def air_cargo_p2() -> AirCargoProblem:
-    # TODO implement Problem 2 definition
+    # TODO P1.5 air_cargo_p2: implement Problem 2 definition
     pass
 
-
 def air_cargo_p3() -> AirCargoProblem:
-    # TODO implement Problem 3 definition
+    # TODO P1.6 air_cargo_p3: implement Problem 3 definition
     pass

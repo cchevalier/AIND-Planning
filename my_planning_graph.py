@@ -303,7 +303,7 @@ class PlanningGraph():
         :return:
             adds A nodes to the current level in self.a_levels[level]
         """
-        # TODO add action A level to the planning graph as described in the Russell-Norvig text
+        # TODO P2.2 add action A level to the planning graph as described in the Russell-Norvig text
         # 1. determine what actions to add and create those PgNode_a objects
         # 2. connect the nodes to the previous S literal level
         # for example, the A0 level will iterate through all possible actions for the problem and add a PgNode_a to a_levels[0]
@@ -320,7 +320,7 @@ class PlanningGraph():
         :return:
             adds S nodes to the current level in self.s_levels[level]
         """
-        # TODO add literal S level to the planning graph as described in the Russell-Norvig text
+        # TODO P2.3 add literal S level to the planning graph as described in the Russell-Norvig text
         # 1. determine what literals to add
         # 2. connect the nodes
         # for example, every A node in the previous level has a list of S nodes in effnodes that represent the effect
@@ -385,7 +385,7 @@ class PlanningGraph():
         :param node_a2: PgNode_a
         :return: bool
         """
-        # TODO test for Inconsistent Effects between nodes
+        # TODO P2.4 test for Inconsistent Effects between nodes
         return False
 
     def interference_mutex(self, node_a1: PgNode_a, node_a2: PgNode_a) -> bool:
@@ -402,7 +402,7 @@ class PlanningGraph():
         :param node_a2: PgNode_a
         :return: bool
         """
-        # TODO test for Interference between nodes
+        # TODO P2.5 test for Interference between nodes
         return False
 
     def competing_needs_mutex(self, node_a1: PgNode_a, node_a2: PgNode_a) -> bool:
@@ -416,7 +416,7 @@ class PlanningGraph():
         :return: bool
         """
 
-        # TODO test for Competing Needs between nodes
+        # TODO P2.6 test for Competing Needs between nodes
         return False
 
     def update_s_mutex(self, nodeset: set):
@@ -451,13 +451,14 @@ class PlanningGraph():
         :param node_s2: PgNode_s
         :return: bool
         """
-        # TODO test for negation between nodes
+        # TODO P2.7 test for negation between nodes
         return False
 
     def inconsistent_support_mutex(self, node_s1: PgNode_s, node_s2: PgNode_s):
         """
         Test a pair of state literals for mutual exclusion, returning True if
         there are no actions that could achieve the two literals at the same
+        time, and False otherwise.  In other words, the two literal nodes are
         time, and False otherwise.  In other words, the two literal nodes are
         mutex if all of the actions that could achieve the first literal node
         are pairwise mutually exclusive with all of the actions that could
@@ -470,7 +471,7 @@ class PlanningGraph():
         :param node_s2: PgNode_s
         :return: bool
         """
-        # TODO test for Inconsistent Support between nodes
+        # TODO P2.8 test for Inconsistent Support between nodes
         return False
 
     def h_levelsum(self) -> int:
@@ -479,6 +480,6 @@ class PlanningGraph():
         :return: int
         """
         level_sum = 0
-        # TODO implement
+        # TODO P2.9 implement
         # for each goal in the problem, determine the level cost, then add them together
         return level_sum
