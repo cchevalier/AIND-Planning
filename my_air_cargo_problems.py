@@ -220,12 +220,28 @@ class AirCargoProblem(Problem):
         conditions by ignoring the preconditions required for an action to be
         executed.
         """
-        # TODO P2.1 h_ignore_preconditions: implement (see Russell-Norvig Ed-3 10.2.3  or Russell-Norvig Ed-2 11.2)
+        # DONE P2.1 h_ignore_preconditions: implement
+        # (see Russell-Norvig Ed-3 10.2.3  or Russell-Norvig Ed-2 11.2)
+
+        # Based on goal_test() above + following forum discussion:
+        # https://discussions.udacity.com/t/understanding-ignore-precondition-heuristic/225906/2
+
+        kb = PropKB()
+        kb.tell(decode_state(node.state, self.state_map).pos_sentence())
+
+        # Thanks Chris Lapollo for the following statement:
+        # "how many of the goal states are not yet satisfied in the current state.
+        # Because the number of unsatisfied goals equals the minimum number of actions
+        # you would need to take to satisfy them all."
         count = 0
+        for clause in self.goal:
+            if clause not in kb.clauses:
+                count += 1
         return count
 
 
 def air_cargo_p1() -> AirCargoProblem:
+
     cargos = ['C1', 'C2']
     planes = ['P1', 'P2']
     airports = ['JFK', 'SFO']
