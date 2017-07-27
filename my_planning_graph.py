@@ -480,6 +480,6 @@ class PlanningGraph():
         :return: int
         """
         level_sum = 0
-        # TODO P2.9 implement
+        # TODO P2.9 implement h_levelsum
         # for each goal in the problem, determine the level cost, then add them together
         return level_sum

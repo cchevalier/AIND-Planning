@@ -21,6 +21,7 @@ class HaveCakeProblem(Problem):
         self.actions_list = self.get_actions()
 
     def get_actions(self):
+
         precond_pos = [expr("Have(Cake)")]
         precond_neg = []
         effect_add = [expr("Eaten(Cake)")]
@@ -28,6 +29,7 @@ class HaveCakeProblem(Problem):
         eat_action = Action(expr("Eat(Cake)"),
                             [precond_pos, precond_neg],
                             [effect_add, effect_rem])
+
         precond_pos = []
         precond_neg = [expr("Have(Cake)")]
         effect_add = [expr("Have(Cake)")]
@@ -35,6 +37,7 @@ class HaveCakeProblem(Problem):
         bake_action = Action(expr("Bake(Cake)"),
                              [precond_pos, precond_neg],
                              [effect_add, effect_rem])
+
         return [eat_action, bake_action]
 
     def actions(self, state: str) -> list:  # of Action
@@ -118,28 +121,40 @@ def have_cake():
 if __name__ == '__main__':
     p = have_cake()
     print("**** Have Cake example problem setup ****")
+
     print("Initial state for this problem is {}".format(p.initial))
+
     print("Actions for this domain are:")
     for a in p.actions_list:
         print('   {}{}'.format(a.name, a.args))
+
     print("Fluents in this problem are:")
     for f in p.state_map:
         print('   {}'.format(f))
+
     print("Goal requirement for this problem are:")
     for g in p.goal:
         print('   {}'.format(g))
+
     print()
+
     print("*** Breadth First Search")
     run_search(p, breadth_first_search)
+
     print("*** Depth First Search")
     run_search(p, depth_first_graph_search)
+
     print("*** Uniform Cost Search")
     run_search(p, uniform_cost_search)
+
     print("*** Greedy Best First Graph Search - null heuristic")
     run_search(p, greedy_best_first_graph_search, parameter=p.h_1)
+
     print("*** A-star null heuristic")
     run_search(p, astar_search, p.h_1)
+
     # print("A-star ignore preconditions heuristic")
     # rs(p, "astar_search - ignore preconditions heuristic", astar_search, p.h_ignore_preconditions)
+
     # print(""A-star levelsum heuristic)
     # rs(p, "astar_search - levelsum heuristic", astar_search, p.h_pg_levelsum)

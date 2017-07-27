@@ -23,10 +23,12 @@ You must either use the -m flag to run in manual mode, or use both the -p and
 choices for each include:
 """
 
+# pname, p
 PROBLEMS = [["Air Cargo Problem 1", air_cargo_p1],
             ["Air Cargo Problem 2", air_cargo_p2],
             ["Air Cargo Problem 3", air_cargo_p3]]
 
+# sname, s, h
 SEARCHES = [["1: breadth_first_search", breadth_first_search, ""],
             ['2: breadth_first_tree_search', breadth_first_tree_search, ""],
             ['3: depth_first_graph_search', depth_first_graph_search, ""],
@@ -88,17 +90,26 @@ def manual():
 
 def main(p_choices, s_choices):
 
+    print("In main()")
+
     problems = [PROBLEMS[i-1] for i in map(int, p_choices)]
     searches = [SEARCHES[i-1] for i in map(int, s_choices)]
 
     for pname, p in problems:
 
+        print("  pname : {}".format(pname))
+        print("  p     : {}".format(p))
+
         for sname, s, h in searches:
+
             hstring = h if not h else " with {}".format(h)
+
             print("\nSolving {} using {}{}...".format(pname, sname, hstring))
 
+            # functions
             _p = p()
             _h = None if not h else getattr(_p, h)
+
             run_search(_p, s, _h)
 
 
@@ -122,7 +133,12 @@ if __name__=="__main__":
     if args.manual:
         manual()
     elif args.problems and args.searches:
+
+        print("Problems: {}".format(args.problems))
+        print("Searches: {}".format(args.searches))
+
         main(list(sorted(set(args.problems))), list(sorted(set((args.searches)))))
+
     else:
         print()
         parser.print_help()
